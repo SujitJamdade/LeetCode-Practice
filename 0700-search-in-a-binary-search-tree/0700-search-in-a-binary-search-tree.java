@@ -17,19 +17,18 @@ class Solution {
     
     public TreeNode searchBST(TreeNode root, int val) {
         
-        if(root==null){
-            return null;
-        }
+        // if not root found in tree it should return as null
+        if(root==null) return null;
+       
         
-        if(val<root.val){
-            return searchBST(root.left, val);
-         
+        // if root found then return the root
+        if(root.val == val) return root;
+        
+        // if root val is less than curr root then find in left tree
+        else if (val < root.val ) return searchBST(root.left, val);
+        
+        // if root val is greater than curr root then find in right tree
+        else return searchBST(root.right, val);
+        
         }
-        else if (val>root.val){
-            return searchBST(root.right, val);
-            
-        }else{
-            return root;
-        }
-    }
 }
