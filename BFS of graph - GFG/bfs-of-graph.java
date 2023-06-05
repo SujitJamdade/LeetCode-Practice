@@ -39,23 +39,42 @@ class Solution {
         
         // Code here
         
-        boolean[] visited = new boolean[V];
+        // boolean[] visited = new boolean[V];
+        // Queue<Integer> que = new ArrayDeque<>();
+        // que.add(0);
+        // ArrayList<Integer> ans = new ArrayList<>();
+        
+        // while(que.size()>0){
+        //     int curr = que.remove();
+            
+        //     if(visited[curr]) continue;
+        //     visited[curr] = true;
+            
+        //     ans.add(curr);
+            
+        //     for(int nbr : adj.get(curr)){
+        //         if(!visited[nbr]) que.add(nbr);
+        //     }
+            
+        // }
+        // return ans
+        
         Queue<Integer> que = new ArrayDeque<>();
         que.add(0);
+        boolean[] visited = new boolean[V];
         ArrayList<Integer> ans = new ArrayList<>();
+        
         
         while(que.size()>0){
             int curr = que.remove();
             
-            if(visited[curr]) continue;
-            visited[curr] = true;
-            
-            ans.add(curr);
-            
-            for(int nbr : adj.get(curr)){
-                if(!visited[nbr]) que.add(nbr);
+            if(!visited[curr]){
+                ans.add(curr);
+                visited[curr] = true;
+                for(int nbr : adj.get(curr)){
+                    if(!visited[nbr]) que.add(nbr);
+                }
             }
-            
         }
         return ans;
     }
