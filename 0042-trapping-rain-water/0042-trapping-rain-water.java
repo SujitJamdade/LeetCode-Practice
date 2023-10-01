@@ -1,9 +1,11 @@
-class Solution {
+/*class Solution {
     
     public int trap(int[] arr) {
         
         // pre calculated array aaproach
         // using pre calculated array for left max and right max
+        // T = O(N)
+        // S = O(N)
         
         int n = arr.length;
         
@@ -31,5 +33,44 @@ class Solution {
         
         
         return water;
+    }
+}
+
+*/
+
+// Approach 2 Using 2 Pointer
+
+
+class Solution {
+    
+    public int trap(int[] arr) {
+        
+        int n = arr.length;
+        int l = 0;
+        int r = n-1;
+        
+        // left max and right max consider as 0
+        
+        int lm = 0;
+        int rm = 0;
+        
+        int res = 0;
+        
+        while(l<=r){
+                        
+            if(rm<=lm){
+                
+                res += Math.max(0, rm-arr[r]);
+                rm = Math.max(rm, arr[r]);
+                r--;
+            }
+            else{
+                res += Math.max(0, lm-arr[l]);
+                lm = Math.max(lm, arr[l]);
+                l++;
+            }
+        }
+        
+        return res;        
     }
 }
