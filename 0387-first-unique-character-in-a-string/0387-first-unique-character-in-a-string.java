@@ -1,6 +1,8 @@
 class Solution {
     public int firstUniqChar(String s) {
         
+        // Usimg HashMap
+        /*
         HashMap<Character, Integer> map = new HashMap<>();
        
         int n = s.length();
@@ -21,6 +23,17 @@ class Solution {
                 return  i;
             }
         }
+        return -1;
+        */
+        
+        // Using simple  functions
+        // indexOf & lastIndexOf
+        
+         for (int i = 0; i < s.length(); i++) {
+            int c = s.charAt(i);
+            if (i == s.lastIndexOf(c) && i == s.indexOf(c)) return i;
+        }
+
         return -1;
     }
 }
