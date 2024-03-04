@@ -6,7 +6,9 @@ class Solution {
         int secondLastRobbery = 0;
         
         for(int currRobbery : nums){
+            
             maxRobbery = Math.max(lastRobbery, secondLastRobbery+currRobbery);
+            
             secondLastRobbery = lastRobbery;
             lastRobbery = maxRobbery;
         }
